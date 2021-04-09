@@ -5,7 +5,6 @@ data_files
 .vscode
 tallyerp.log
 build/
-sample/
 tally.log
 p&l.json
 salessummary.json
