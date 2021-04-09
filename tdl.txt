@@ -1,0 +1,130 @@
+
+[Collection: MyPurchase]
+Title: $$LocaleString:"Name of Purchase wise"
+Source Collection : All Vouchers
+ParmVar : SVFromDate : Date : 20190401
+ParmVar : SVToDate : Date : 20200331
+
+Walk: All Inventory Entries
+Fetch : StockItemName, BilledQty, Rate, Discount,Amount
+Fetch : VoucherNumber,CurrencyName, Date, PartyLedgerName,Reference,Address,Statename,CountryofResidence,HSNCode,VoucherTypeName,GodownName,LedgerName,ReferenceDate 
+By : VoucherNumber : $VoucherNumber
+By : CurrencyName : $CurrencyName
+By : PartyLedgerName : $PartyLedgerName
+By : PartyGSTIN : $PartyGSTIN
+By : Reference : $Reference
+By : Address : $Address
+By : Statename : $Statename
+$$ListValue : Addresslist : $Address
+By : CountryofResidence : $CountryofResidence
+By : HSNCode :$HSNCode
+By : VoucherTypeName : $VoucherTypeName
+By : Item : $StockItemName
+By : GodownName :$GodownName
+By : LedgerName :$LedgerName
+By : SubAmount :$Amount
+Aggr Compute: BilledQty : Sum : $BiledQty
+Aggr Compute : Date : $Date
+Aggr Compute : ReferenceDate :$ReferenceDate
+Aggr Compute : Discount :$Discount
+
+Compute : Led1 : $$CollectionField:$LedgerName:1:AllLedgerEntries
+Compute : AMT1 : $$CollectionField:$Amount:1:AllLedgerEntries
+Compute : Led2 : $$CollectionField:$LedgerName:2:AllLedgerEntries
+Compute : AMT2 : $$CollectionField:$Amount:2:AllLedgerEntries
+Compute : Led3 : $$CollectionField:$LedgerName:3:AllLedgerEntries
+Compute : AMT3 : $$CollectionField:$Amount:3:AllLedgerEntries
+Compute : Led4 : $$CollectionField:$LedgerName:4:AllLedgerEntries
+Compute : AMT4 : $$CollectionField:$Amount:4:AllLedgerEntries
+Compute : Led5 : $$CollectionField:$LedgerName:5:AllLedgerEntries
+Compute : AMT5 : $$CollectionField:$Amount:5:AllLedgerEntries
+Compute : Led6 : $$CollectionField:$LedgerName:6:AllLedgerEntries
+Compute : AMT6 : $$CollectionField:$Amount:6:AllLedgerEntries
+Compute : Led7 : $$CollectionField:$LedgerName:7:AllLedgerEntries
+Compute : AMT7 : $$CollectionField:$Amount:7:AllLedgerEntries
+Compute : Led8 : $$CollectionField:$LedgerName:8:AllLedgerEntries
+Compute : AMT8 : $$CollectionField:$Amount:8:AllLedgerEntries
+
+
+
+Format: $StockItemName,25
+Format: $Address,100
+Format : $Date,20
+Format : $VoucherNumber,10
+Format : $PartyLedgerName,20
+Format : $PartyGSTIN,20
+Format : $BilledQty,10
+Format: $Rate,15
+Format : $saleQty
+Format: $BalQTy
+
+[Collection: myvouchers]
+Title: $$LocaleString:"Name of Purchase wise"
+Source Collection : All Vouchers
+ParmVar : SVFromDate : Date : 20190401
+ParmVar : SVToDate : Date : 20200331
+
+Fetch : StockItemName, BilledQty, Rate, Discount,Amount
+Fetch : VoucherNumber,CurrencyName, Date, PartyLedgerName,Reference,Address,Statename,CountryofResidence,HSNCode,VoucherTypeName,GodownName,LedgerName,ReferenceDate 
+By : VoucherNumber : $VoucherNumber
+By : CurrencyName : $CurrencyName
+By : PartyLedgerName : $PartyLedgerName
+By : PartyGSTIN : $PartyGSTIN
+By : Reference : $Reference
+By : Address : $Address
+By : Statename : $Statename
+$$ListValue : Addresslist : $Address
+By : CountryofResidence : $CountryofResidence
+By : HSNCode :$HSNCode
+By : VoucherTypeName : $VoucherTypeName
+By : Item : $StockItemName
+By : GodownName :$GodownName
+By : LedgerName :$LedgerName
+By : SubAmount :$Amount
+Aggr Compute: BilledQty : Sum : $BiledQty
+Aggr Compute : Date : $Date
+Aggr Compute : ReferenceDate :$ReferenceDate
+Aggr Compute : Discount :$Discount
+
+Compute : Led1 : $$CollectionField:$LedgerName:1:AllLedgerEntries
+Compute : AMT1 : $$CollectionField:$Amount:1:AllLedgerEntries
+Compute : Led2 : $$CollectionField:$LedgerName:2:AllLedgerEntries
+Compute : AMT2 : $$CollectionField:$Amount:2:AllLedgerEntries
+Compute : Led3 : $$CollectionField:$LedgerName:3:AllLedgerEntries
+Compute : AMT3 : $$CollectionField:$Amount:3:AllLedgerEntries
+Compute : Led4 : $$CollectionField:$LedgerName:4:AllLedgerEntries
+Compute : AMT4 : $$CollectionField:$Amount:4:AllLedgerEntries
+Compute : Led5 : $$CollectionField:$LedgerName:5:AllLedgerEntries
+Compute : AMT5 : $$CollectionField:$Amount:5:AllLedgerEntries
+Compute : Led6 : $$CollectionField:$LedgerName:6:AllLedgerEntries
+Compute : AMT6 : $$CollectionField:$Amount:6:AllLedgerEntries
+Compute : Led7 : $$CollectionField:$LedgerName:7:AllLedgerEntries
+Compute : AMT7 : $$CollectionField:$Amount:7:AllLedgerEntries
+Compute : Led8 : $$CollectionField:$LedgerName:8:AllLedgerEntries
+Compute : AMT8 : $$CollectionField:$Amount:8:AllLedgerEntries
+
+
+
+Format: $StockItemName,25
+Format: $Address,100
+Format : $Date,20
+Format : $VoucherNumber,10
+Format : $PartyLedgerName,20
+Format : $PartyGSTIN,20
+Format : $BilledQty,10
+Format: $Rate,15
+Format : $saleQty
+Format: $BalQTy
+
+[Collection : All Vouchers]
+Type : Voucher
+Fetch : BasicDueDateOfPymt,PartyLedgerName,LedgerName 
+Belongs To : Yes
+Set : SVFromDate : Date : 20180401
+Set : SVToDate : Date : 20200331
+
+[Collection : Stock Items]
+Type : StockItem
+Compute : gst1 : $$CollectionField:$Taxability:1:GSTDetails
+Compute : rate : $$CollectionField:$Rate:1:StandardCostList
+Compute : price : $$CollectionField:$Rate:1:StandardPriceList

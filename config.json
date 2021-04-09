@@ -1,0 +1,5 @@
+{
+    "BatchSize":1000,
+    "BaseUrl":"65.0.148.45:8181",
+    "LOG":"tallyprocess.log"
+}

@@ -1,0 +1,17 @@
+/backup
+/__pycache__
+db.sqlite
+data_files
+.vscode
+tallyerp.log
+build/
+sample/
+tally.log
+p&l.json
+salessummary.json
+AR.json
+AP.json
+partyledgergroups.json
+tallyprocess.log
+/dist
+/output
